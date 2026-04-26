@@ -28,8 +28,7 @@ jobs:
       - name: Run Claude
         uses: anthropics/claude-code-action@beta
         with:
-          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
-          model: claude-sonnet-4-6
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
           # For PR review, focus on Android/Kotlin best practices, security, and correctness
           custom_instructions: |
             You are reviewing an Android application written in Kotlin + Jetpack Compose.
