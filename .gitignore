@@ -1,0 +1,32 @@
+# Gradle
+.gradle/
+build/
+local.properties
+
+# Android
+*.apk
+*.aab
+*.dex
+captures/
+.externalNativeBuild/
+.cxx/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+
+# Keystores — NEVER commit these
+*.jks
+*.keystore
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compose / Kotlin
+.kotlin/
+hs_err_pid*
+
+# Logs
+*.log

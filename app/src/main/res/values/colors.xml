@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cy_0">#FF00FFFF</color>
+    <color name="cy_1">#FF00E5E5</color>
+    <color name="mg_0">#FFFF00AA</color>
+    <color name="amber">#FFFFB300</color>
+
+    <color name="bg_0">#FF000000</color>
+    <color name="bg_1">#FF05060A</color>
+    <color name="bg_2">#FF0A0D14</color>
+    <color name="bg_3">#FF0F131D</color>
+
+    <color name="ink_0">#FFEAFEFF</color>
+    <color name="ink_1">#FFA8C5C8</color>
+
+    <color name="status_bar">#FF000000</color>
+</resources>

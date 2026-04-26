@@ -1,0 +1,29 @@
+Zupt is a privacy-first backup utility that compresses and encrypts your files entirely on-device. No network. No telemetry. No accounts.
+
+FEATURES
+
+• Post-quantum hybrid encryption — ML-KEM-768 (FIPS 203) combined with X25519 (RFC 7748). Your archives stay safe even against future quantum adversaries.
+• Authenticated encryption — AES-256-CTR with HMAC-SHA256 in Encrypt-then-MAC mode. Every archive is tamper-evident.
+• Password-based protection — PBKDF2-HMAC-SHA256 with 600,000 iterations (OWASP 2023 guidance).
+• Integrity verification — XXH64 checksums on every block plus file-level hashing.
+• Archive inspection — view metadata (UUID, timestamp, codec, flags, block count) without decrypting.
+• 100% offline — the INTERNET permission is not declared. The app is architecturally incapable of network I/O.
+• Storage Access Framework — no broad storage permissions. The system file picker handles every read and write.
+
+SECURITY POSTURE
+
+• No ads, no trackers, no analytics, no crash reporters.
+• No Google Play Services or proprietary SDKs.
+• Sensitive key material is wiped from memory after use.
+• Release builds strip all logging via R8.
+• Source is MIT-licensed and reproducible.
+
+FORMAT
+
+Archives use the zupt/v1 format: a compact binary header, per-file entry, per-block table, encrypted payload, HMAC tag. Interoperability with the desktop Zupt CLI is a roadmap item.
+
+CREDITS
+
+Zupt CLI by Cristian Cezar Moisés — MIT
+libzupt by Alessandro de Oliveira Faria — MIT
+Cryptography via BouncyCastle — MIT

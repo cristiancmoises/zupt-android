@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Zupt</string>
+    <string name="tagline">Post-Quantum Backup</string>
+
+    <string name="tab_keys">Keys</string>
+    <string name="tab_compress">Compress</string>
+    <string name="tab_extract">Extract</string>
+    <string name="tab_verify">Verify</string>
+    <string name="tab_info">Info</string>
+    <string name="tab_about">About</string>
+
+    <!-- Keys -->
+    <string name="keys_title">Post-Quantum Key Generation</string>
+    <string name="keys_subtitle">Generate ML-KEM-768 + X25519 hybrid keypair for quantum-resistant encryption.</string>
+    <string name="keys_body">Creates a private key (keep secret — decrypts archives) and a public key (share freely — encrypts archives). Based on FIPS 203 and RFC 7748 — safe against both classical and quantum computers.</string>
+    <string name="keys_generate">Generate Keypair</string>
+    <string name="keys_copy_pub">Copy Public</string>
+    <string name="keys_copy_priv">Copy Private</string>
+    <string name="keys_export_pub">Export Public</string>
+    <string name="keys_export_priv">Export Private</string>
+
+    <!-- Compress -->
+    <string name="compress_title">Compress &amp; Encrypt</string>
+    <string name="compress_subtitle">Pick a file from your device — receive a compressed and encrypted .zupt archive.</string>
+    <string name="compress_pick">Tap to pick a file</string>
+    <string name="compress_codec">Codec</string>
+    <string name="compress_level">Level (1–9)</string>
+    <string name="compress_solid">Solid mode</string>
+    <string name="compress_pw">Password (optional)</string>
+    <string name="compress_pq">PQ Public Key (optional, hex)</string>
+    <string name="compress_run">Compress &amp; Save</string>
+
+    <!-- Extract -->
+    <string name="extract_title">Extract &amp; Decrypt</string>
+    <string name="extract_subtitle">Pick a .zupt archive — receive the original files.</string>
+    <string name="extract_pick">Tap to pick a .zupt archive</string>
+    <string name="extract_pw">Password (if encrypted)</string>
+    <string name="extract_pq">PQ Private Key (if PQ encrypted, hex)</string>
+    <string name="extract_run">Extract &amp; Save</string>
+
+    <!-- Verify -->
+    <string name="verify_title">Verify Archive Integrity</string>
+    <string name="verify_subtitle">Validate every block\'s XXH64 checksum without extracting — confirm your backup is intact.</string>
+    <string name="verify_pick">Tap to pick a .zupt archive</string>
+    <string name="verify_run">Verify Integrity</string>
+
+    <!-- Info -->
+    <string name="info_title">Archive Info</string>
+    <string name="info_subtitle">Inspect archive metadata without needing a password — format version, UUID, creation time, flags, block count.</string>
+    <string name="info_pick">Tap to pick a .zupt archive</string>
+    <string name="info_run">Show Info</string>
+
+    <!-- About -->
+    <string name="about_title">About</string>
+</resources>
