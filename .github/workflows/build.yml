@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build:
-    name: Assemble release (unsigned)
+    name: Assemble release (debug-signed)
     runs-on: ubuntu-latest
     timeout-minutes: 30
 
@@ -32,18 +32,7 @@ jobs:
         with:
           gradle-home-cache-cleanup: true
 
-      - name: Cache Gradle wrapper
-        uses: actions/cache@v4
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: gradle-${{ runner.os }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: gradle-${{ runner.os }}-
-
-      - name: Decode debug keystore
-        # CI builds use a deterministic debug keystore so APKs are installable for testing.
-        # Production releases are signed by release.yml using GitHub Secrets.
+      - name: Generate debug keystore for CI signing
         run: |
           mkdir -p ~/.android
           keytool -genkey -v -keystore ~/.android/debug.keystore \
@@ -55,11 +44,13 @@ jobs:
         run: ./gradlew :app:lintRelease --no-daemon
         continue-on-error: true
 
-      - name: Assemble release APK
-        run: ./gradlew :app:assembleRelease --no-daemon
-
-      - name: Bundle release AAB
-        run: ./gradlew :app:bundleRelease --no-daemon
+      - name: Assemble release APK + AAB
+        run: |
+          export ZUPT_KEYSTORE="$HOME/.android/debug.keystore"
+          export ZUPT_KS_PASS=android
+          export ZUPT_KS_ALIAS=androiddebugkey
+          export ZUPT_KS_KEY_PASS=android
+          ./gradlew :app:assembleRelease :app:bundleRelease --no-daemon
 
       - name: Compute SHA-256 fingerprints
         run: |
@@ -70,14 +61,14 @@ jobs:
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
-          name: zupt-apk-unsigned-${{ github.sha }}
+          name: zupt-apk-${{ github.sha }}
           path: app/build/outputs/apk/release/*.apk
           if-no-files-found: error
 
       - name: Upload AAB artifact
         uses: actions/upload-artifact@v4
         with:
-          name: zupt-aab-unsigned-${{ github.sha }}
+          name: zupt-aab-${{ github.sha }}
           path: app/build/outputs/bundle/release/*.aab
           if-no-files-found: error
 

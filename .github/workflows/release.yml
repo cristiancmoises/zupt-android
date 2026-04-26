@@ -46,6 +46,8 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-home-cache-cleanup: true
 
       - name: Decode signing keystore
         env:
@@ -55,12 +57,12 @@ jobs:
             echo "::error::Missing secret ZUPT_KEYSTORE_BASE64. See BUILD_REPRODUCIBLE.md for setup."
             exit 1
           fi
-          echo "$KEYSTORE_BASE64" | base64 -d > $HOME/zupt-release.keystore
-          ls -la $HOME/zupt-release.keystore
+          echo "$KEYSTORE_BASE64" | base64 -d > "$HOME/zupt-release.keystore"
+          echo "ZUPT_KEYSTORE=$HOME/zupt-release.keystore" >> "$GITHUB_ENV"
+          ls -la "$HOME/zupt-release.keystore"
 
       - name: Build signed release APK + AAB
         env:
-          ZUPT_KEYSTORE: ${{ env.HOME }}/zupt-release.keystore
           ZUPT_KS_PASS: ${{ secrets.ZUPT_KS_PASS }}
           ZUPT_KS_ALIAS: ${{ secrets.ZUPT_KS_ALIAS }}
           ZUPT_KS_KEY_PASS: ${{ secrets.ZUPT_KS_KEY_PASS }}
