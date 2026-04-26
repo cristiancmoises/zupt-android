@@ -181,7 +181,7 @@ Bundled libraries:
 ## Author
 
 **Cristian Cezar Moisés** ([Security Ops](https://securityops.co))
-- Email: cristian@securityops.co · ethicalhacker@riseup.net
+- Email: sac@securityops.co · ethicalhacker@riseup.net
 - LinkedIn: [linkedin.com/in/cristiancezarmoises](https://linkedin.com/in/cristiancezarmoises)
 - Wiki: [wiki.securityops.co](https://wiki.securityops.co)
 - Self-hosted git: [git.securityops.co](https://git.securityops.co)
